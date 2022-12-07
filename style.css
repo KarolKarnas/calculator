@@ -26,10 +26,11 @@ header {
 .calc-body {
 	height: 600px;
 	width: 500px;
-	background-color: rgb(218, 200, 130);
+	background-color: rgb(63, 63, 63);
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
+	border-radius: 5px;
 }
 
 .calc-display-cont {
@@ -43,10 +44,11 @@ header {
 	width: 80%;
 	height: 100px;
 	background-color: #fff;
-	border: 1px solid black;
+	/* border: 1px solid lightsalmon; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 10px;
 }
 
 .calc-display p {
@@ -62,13 +64,19 @@ header {
 }
 
 .calc-keyboard div {
-	background-color: rgb(165, 192, 165);
+	background-color: rgb(140, 206, 223);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 26px;
 	border-radius: 10px;
 }
+
+.calc-keyboard div:hover {
+	background-color: rgb(252, 112, 57);
+	outline: 2px solid lightsalmon;
+	cursor: pointer;
+} 
 
 .calc-keyboard div:nth-child(1) {
 	grid-column: 1 / 3;
@@ -91,9 +99,12 @@ header {
 }
 
 div.digits {
-	background-color: aquamarine;
+	background-color: rgb(255, 255, 255);
 }
 
 div.operators {
 	background-color: lightsalmon;
 }
+
+
+

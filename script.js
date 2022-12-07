@@ -1,7 +1,5 @@
 function add(a, b) {
-	// reset numbers
-	// firstNum = undefined;
-	// secondNum = undefined;
+
 	return a + b;
 }
 
@@ -20,8 +18,9 @@ function divide(a, b) {
 function operate(operator, a, b) {
 	let result = operator(a, b);
 	populateDisplay(result);
-    clearAfterFirst = true;
+	clearAfterFirst = true;
 	console.log(`the result ${result}`);
+
 	return result;
 }
 
@@ -43,11 +42,13 @@ const seven = document.querySelector('#seven');
 const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
-//function buttons
+//operator buttons
 const clear = document.querySelector('#clear');
 const addButton = document.querySelector('#addButton');
-const equalButton = document.querySelector('#equalButton');
 const subtractButton = document.querySelector('#subtractButton');
+const multiplyButton = document.querySelector('#multiplyButton');
+const divideButton = document.querySelector('#divideButton');
+const equalButton = document.querySelector('#equalButton');
 
 // ---- LISTENERS ----
 //digits
@@ -95,6 +96,8 @@ zero.addEventListener('click', function () {
 clear.addEventListener('click', clearDisplay);
 addButton.addEventListener('click', storeAdd);
 subtractButton.addEventListener('click', storeSubtract);
+multiplyButton.addEventListener('click', storeMultiply);
+divideButton.addEventListener('click', storeDivide);
 equalButton.addEventListener('click', getEquality);
 
 // ---- FUNCTIONS ----
@@ -105,6 +108,7 @@ let secondNum;
 let operator;
 let clearAfterFirst;
 
+//display functions
 function populateDisplay(num) {
 	displayText.textContent += num;
 	displayValue = displayText.textContent;
@@ -122,6 +126,7 @@ function cleanAfterFirstNum() {
 	}
 }
 
+//operators functions  + - * /
 function storeAdd() {
 	firstNum = +displayValue;
 	operator = 'add';
@@ -134,18 +139,39 @@ function storeSubtract() {
 	clearAfterFirst = true;
 }
 
+function storeMultiply() {
+	firstNum = +displayValue;
+	operator = 'multiply';
+	clearAfterFirst = true;
+}
+
+function storeDivide() {
+	firstNum = +displayValue;
+	operator = 'divide';
+	clearAfterFirst = true;
+}
+
 function getEquality() {
 	secondNum = +displayValue;
 	clearDisplay();
 	if (operator === 'add') {
-        console.log(`operator: ${operator}, first number: ${firstNum}, second ${secondNum} `)
 		operate(add, firstNum, secondNum);
 	} else if (operator === 'subtract') {
-        console.log(`operator: ${operator}, first number: ${firstNum}, second ${secondNum} `)
 		operate(subtract, firstNum, secondNum);
+	} else if (operator === 'multiply') {
+		operate(multiply, firstNum, secondNum);
+	} else if (operator === 'divide') {
+		operate(divide, firstNum, secondNum);
 	}
+
 }
 
+
+
+        	// reset numbers
+            // firstNum = result;
+            // secondNum = undefined;
+// console.log(`operator: ${operator}, first number: ${firstNum}, second ${secondNum} `)
 // console.log(operate(add, 1, 2));
 // console.log(operate(subtract, 1, 2));
 // console.log(operate(multiply, 1, 2));
